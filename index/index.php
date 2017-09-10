@@ -17,11 +17,18 @@
         <title></title>
         <script>
             $(document).ready(function() {
+                var flag = 0;
                 var color=getRandomColor();
                 $("body").css("background-color", color); 
-                $("body").keydown(function() {
-                    var color=getRandomColor();
-                    $("body").css("background-color", color); 
+                $("body").keydown(function(){
+                    if (flag == 0) {
+                        var color=getRandomColor();
+                        $("body").css("background-color", color);
+                        flag = 1;
+                    }
+                });
+                $("body").keyup(function() {
+                    flag = 0; 
                 });
             });
             var getRandomColor = function(){    
