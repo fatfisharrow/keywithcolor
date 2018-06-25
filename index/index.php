@@ -16,13 +16,23 @@
         <script src="[:vendor]/sb-admin/sb-admin-2.min.js"></script>
         <title></title>
         <script>
+            var seed = 0;
+            var rand = function(min, max) {
+                max = max || 1;
+                min = min || 0;
+                seed = (seed * 9301 + 49297) % 233280;
+                var rnd = seed / 233280.0;
+                return min + rnd * (max - min); 
+            };
             $(document).ready(function() {
                 var flag = 0;
-                var color=getRandomColor();
+                var color = getRandomColor();
                 $("body").css("background-color", color); 
-                $("body").keydown(function(){
+                $("body").keydown(function(key){
                     if (flag == 0) {
-                        var color=getRandomColor();
+                        console.log(key.keyCode);
+                        seed = key.keyCode;
+                        var color = getRandomColor();
                         $("body").css("background-color", color);
                         flag = 1;
                     }
@@ -34,7 +44,7 @@
             var getRandomColor = function(){    
                 return  '#' +    
                     (function(color){    
-                        return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])    
+                        return (color +=  '0123456789abcdef'[Math.floor(rand(0, 16))])    
                             && (color.length == 6) ?  color : arguments.callee(color);    
                     })('');    
             } 
