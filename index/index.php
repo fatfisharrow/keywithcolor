@@ -14,6 +14,7 @@
         <script src="[:vendor]/vue/vue.js"></script>
         <script src="[:vendor]/metisMenu/metisMenu.min.js"></script>
         <script src="[:vendor]/sb-admin/sb-admin-2.min.js"></script>
+        <script src="[:app]/js/html5webpiano.js"></script>
         <title></title>
         <script>
             var seed = 0;
